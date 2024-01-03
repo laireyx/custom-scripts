@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+if [[ ! -e /tmp/daily-pullall-$(date +%u).sem ]]
+then
+    touch /tmp/daily-pullall-$(date +%u).sem
+    pullall
+fi

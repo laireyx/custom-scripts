@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+for script in $HOME/custom-scripts/daily/*
+do
+    zsh "$script"
+done
+
