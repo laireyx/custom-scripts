@@ -2,6 +2,7 @@
 
 for script in $HOME/custom-scripts/daily/*
 do
+    echo "$script"
     zsh "$script"
 done
 

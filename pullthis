@@ -5,24 +5,25 @@ GREEN='\033[0;32m'
 GRAY='\033[0;37m'
 NC='\033[0m'
 
+PROJECT=$(pwd)
+
 if ! (git remote | grep origin > /dev/null)
 then
-    echo -e "[${GRAY}skip${NC}] $project"
-    continue
+    echo -e "[${GRAY}skip${NC}] $PROJECT"
+    exit
 fi
 
-git stash push -q 2>&1 >/dev/null
+git stash push -q >/dev/null 2>&1
 
 if (git pull -q origin develop --rebase)
 then
     # success
-    echo -e "[${GREEN}success${NC}] $project"
+    echo -e "[${GREEN}success${NC}] $PROJECT"
 else
     # fail
-    echo -e "[${RED}fail${NC}] $project"
+    echo -e "[${RED}fail${NC}] $PROJECT"
     # cleanup
     git rebase --abort
 fi
 
-git stash pop -q 2>&1 >/dev/null
-
+git stash pop -q >/dev/null 2>&1

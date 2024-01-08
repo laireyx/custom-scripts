@@ -5,3 +5,4 @@ then
     touch /tmp/daily-pullall-$(date +%u).sem
     pullall
 fi
+
