@@ -7,6 +7,12 @@ NC='\033[0m'
 
 PROJECT=$(pwd)
 
+if ! [[ -e .git ]]
+then
+    echo -e "[${GRAY}skip${NC}] $PROJECT"
+    exit
+fi
+
 if ! (git remote | grep origin > /dev/null)
 then
     echo -e "[${GRAY}skip${NC}] $PROJECT"
